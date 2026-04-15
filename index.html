@@ -1,567 +1,587 @@
 <!doctype html>
 <html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Janet Ogenyi — Frontend Engineer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Serif+Display&family=Shippori+Mincho:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root,
+      [data-theme='light'] {
+        --bg: #faf9f7;
+        --surface: #ffffff;
+        --text: #1a1a1a;
+        --muted: #6b6b6b;
+        --light: #a0a0a0;
+        --border: #e8e6e3;
+        --warm: #c9644a;
+        --radius: 14px;
+        --header-bg: rgba(250, 249, 247, 0.85);
+      }
+
+      [data-theme='dark'] {
+        --bg: #0e0e12;
+        --surface: #18181f;
+        --text: #e4e4e8;
+        --muted: #8a8a9a;
+        --light: #5a5a6a;
+        --border: #2a2a35;
+        --warm: #e07a5f;
+        --header-bg: rgba(14, 14, 18, 0.85);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        transition:
+          background 0.35s ease,
+          color 0.35s ease;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--header-bg);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        transition:
+          background 0.35s ease,
+          border-color 0.35s ease;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Janet Ogenyi — Frontend Engineer</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Serif+Display&family=Shippori+Mincho:wght@400;500;700&display=swap"
-    rel="stylesheet" />
-  <style>
-    :root,
-    [data-theme='light'] {
-      --bg: #faf9f7;
-      --surface: #ffffff;
-      --text: #1a1a1a;
-      --muted: #6b6b6b;
-      --light: #a0a0a0;
-      --border: #e8e6e3;
-      --warm: #c9644a;
-      --radius: 14px;
-      --header-bg: rgba(250, 249, 247, 0.85);
-    }
-
-    [data-theme='dark'] {
-      --bg: #0e0e12;
-      --surface: #18181f;
-      --text: #e4e4e8;
-      --muted: #8a8a9a;
-      --light: #5a5a6a;
-      --border: #2a2a35;
-      --warm: #e07a5f;
-      --header-bg: rgba(14, 14, 18, 0.85);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Zen Kaku Gothic New', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      transition:
-        background 0.35s ease,
-        color 0.35s ease;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--header-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      transition:
-        background 0.35s ease,
-        border-color 0.35s ease;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .site-name {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-    }
-
-    .header-links {
-      display: flex;
-      gap: 1.25rem;
-      align-items: center;
-    }
-
-    .header-links a {
-      font-size: 0.88rem;
-      color: var(--muted);
-      transition: color 0.25s;
-    }
-
-    .header-links a:hover {
-      color: var(--text);
-    }
-
-    .header-links .cta-link {
-      background: var(--text);
-      color: var(--bg);
-      padding: 0.5rem 1.25rem;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      transition:
-        opacity 0.25s,
-        background 0.35s,
-        color 0.35s;
-    }
-
-    .header-links .cta-link:hover {
-      opacity: 0.8;
-      color: var(--bg);
-    }
-
-    .theme-toggle {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.05rem;
-      line-height: 1;
-      color: var(--text);
-      transition:
-        border-color 0.25s,
-        background 0.35s;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--muted);
-    }
-
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 3rem 2rem;
-    }
-
-    .hero h1 {
-      font-family: 'Shippori Mincho', serif;
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 400;
-      line-height: 1.2;
-      max-width: 720px;
-      margin-bottom: 2rem;
-      letter-spacing: -0.01em;
-    }
-
-    .hero-bio {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 600px;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-bio strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .about-link {
-      font-size: 0.9rem;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      transition:
-        color 0.25s,
-        border-color 0.25s;
-    }
-
-    .about-link:hover {
-      color: var(--text);
-      border-color: var(--text);
-    }
-
-    .section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 3rem;
-    }
-
-    .section h2 {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 1.75rem;
-      font-weight: 400;
-      margin-bottom: 0.6rem;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 540px;
-      margin-bottom: 3rem;
-      line-height: 1.6;
-    }
-
-    /* Projects */
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-    }
-
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        background 0.35s ease,
-        border-color 0.35s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-    }
-
-    [data-theme='dark'] .project-card:hover {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-    }
-
-    .project-info {
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .project-meta {
-      font-size: 0.75rem;
-      color: var(--light);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-info h3 {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      line-height: 1.35;
-      margin-bottom: 1rem;
-    }
-
-    .project-info p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-      max-width: 680px;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .project-tags span {
-      font-size: 0.7rem;
-      padding: 0.3rem 0.7rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      color: var(--muted);
-      transition: border-color 0.35s;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      transition:
-        transform 0.3s,
-        background 0.35s,
-        border-color 0.35s;
-    }
-
-    .skill-item:hover {
-      transform: translateY(-2px);
-    }
-
-    .skill-item h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .skill-item p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* Experience */
-    .exp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 2rem;
-    }
-
-    .exp-date {
-      font-size: 0.82rem;
-      color: var(--light);
-      padding-top: 0.2rem;
-    }
-
-    .exp-body h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-    }
-
-    .exp-body .exp-role {
-      font-size: 0.88rem;
-      color: var(--warm);
-      margin-bottom: 0.25rem;
-    }
-
-    .exp-body .exp-desc {
-      font-size: 0.82rem;
-      color: var(--light);
-      font-style: italic;
-      margin-bottom: 0.75rem;
-    }
-
-    .exp-body ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .exp-body ul li {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-      padding-left: 1rem;
-      position: relative;
-    }
-
-    .exp-body ul li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--light);
-    }
-
-    /* CTA */
-    .cta-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 3rem;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-family: 'Shippori Mincho', serif;
-
-      font-size: 2rem;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-    }
-
-    .cta-section p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      background: var(--text);
-      color: var(--bg);
-      padding: 0.75rem 2.25rem;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition:
-        opacity 0.25s,
-        background 0.35s,
-        color 0.35s;
-    }
-
-    .cta-btn:hover {
-      opacity: 0.8;
-    }
-
-    /* Footer */
-    footer {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2.5rem 3rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      transition: border-color 0.35s;
-    }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--light);
-    }
-
-    .footer-time {
-      font-size: 0.8rem;
-      color: var(--light);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-links a {
-      font-size: 0.82rem;
-      color: var(--muted);
-      transition: color 0.25s;
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 768px) {
       .header-inner {
-        padding: 1.25rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .site-name {
+        font-family: 'Shippori Mincho', serif;
+        font-size: 1.15rem;
+        font-weight: 500;
+      }
+
+      .header-links {
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
+      }
+
+      .header-links a {
+        font-size: 0.88rem;
+        color: var(--muted);
+        transition: color 0.25s;
+      }
+
+      .header-links a:hover {
+        color: var(--text);
+      }
+
+      .header-links .cta-link {
+        background: var(--text);
+        color: var(--bg);
+        padding: 0.5rem 1.25rem;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        transition:
+          opacity 0.25s,
+          background 0.35s,
+          color 0.35s;
+      }
+
+      .header-links .cta-link:hover {
+        opacity: 0.8;
+        color: var(--bg);
+      }
+
+      .theme-toggle {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.05rem;
+        line-height: 1;
+        color: var(--text);
+        transition:
+          border-color 0.25s,
+          background 0.35s;
+      }
+
+      .theme-toggle:hover {
+        border-color: var(--muted);
       }
 
       .hero {
-        padding: 3rem 1.5rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 3rem 2rem;
+      }
+
+      .hero h1 {
+        font-family: 'Shippori Mincho', serif;
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        font-weight: 400;
+        line-height: 1.2;
+        max-width: 720px;
+        margin-bottom: 2rem;
+        letter-spacing: -0.01em;
+      }
+
+      .hero-bio {
+        font-size: 1.05rem;
+        color: var(--muted);
+        max-width: 600px;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-bio strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .about-link {
+        font-size: 0.9rem;
+        color: var(--muted);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2px;
+        transition:
+          color 0.25s,
+          border-color 0.25s;
+      }
+
+      .about-link:hover {
+        color: var(--text);
+        border-color: var(--text);
       }
 
       .section {
-        padding: 3.5rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 3rem;
       }
 
-      .cta-section {
-        padding: 3.5rem 1.5rem;
+      .section h2 {
+        font-family: 'Shippori Mincho', serif;
+        font-size: 1.75rem;
+        font-weight: 400;
+        margin-bottom: 0.6rem;
       }
 
-      footer {
-        padding: 2rem 1.5rem;
+      .section-sub {
+        color: var(--muted);
+        font-size: 0.95rem;
+        max-width: 540px;
+        margin-bottom: 3rem;
+        line-height: 1.6;
+      }
+
+      /* Projects */
+      .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+
+      .project-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease,
+          background 0.35s ease,
+          border-color 0.35s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+      }
+
+      [data-theme='dark'] .project-card:hover {
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .project-info {
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .project-meta {
+        font-size: 0.75rem;
+        color: var(--light);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.75rem;
+      }
+
+      .project-info h3 {
+        font-family: 'Shippori Mincho', serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.35;
+        margin-bottom: 1rem;
+      }
+
+      .project-info p {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+        max-width: 680px;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .project-tags span {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        color: var(--muted);
+        transition: border-color 0.35s;
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .skill-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        transition:
+          transform 0.3s,
+          background 0.35s,
+          border-color 0.35s;
+      }
+
+      .skill-item:hover {
+        transform: translateY(-2px);
+      }
+
+      .skill-item h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .skill-item p {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* Experience */
+      .exp-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
       }
 
       .exp-item {
-        grid-template-columns: 1fr;
-        gap: 0.25rem;
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 2rem;
       }
 
-      .header-links a:not(.cta-link) {
-        display: none;
+      .exp-date {
+        font-size: 0.82rem;
+        color: var(--light);
+        padding-top: 0.2rem;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <header>
-    <div class="header-inner">
-      <div class="site-name">J.O</div>
-      <div class="header-links">
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="mailto:janeteneogenyi@gmail.com" class="cta-link">Work with me</a>
-        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
-      </div>
-    </div>
-  </header>
+      .exp-body h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+      }
 
-  <div class="hero">
-    <h1 class="reveal">
-      Frontend engineer and builder, shipping thoughtful products with code
-      and infrastructure.
-    </h1>
-    <p class="hero-bio reveal">
-      I am Janet, a <strong>Frontend Engineer</strong> based in Lagos with 5+
-      years of experience building high-performance web applications across
-      fintech, enterprise software, and data-driven platforms. I
-      single-handedly architected the frontend for a fintech platform serving
-      <strong>200,000+ users</strong>, and I care deeply about the craft of
-      shipping reliable, scalable software.
-    </p>
-    <a href="#projects" class="about-link reveal">See my work ↓</a>
-  </div>
+      .exp-body .exp-role {
+        font-size: 0.88rem;
+        color: var(--warm);
+        margin-bottom: 0.25rem;
+      }
 
-  <div class="section" id="projects">
-    <h2 class="reveal">A few things I have built</h2>
-    <p class="section-sub reveal">
-      Selected work spanning frontend engineering, fintech products, and
-      infrastructure.
-    </p>
-    <div class="projects-list">
-      <div class="project-card reveal">
-        <div class="project-info">
-          <div class="project-meta">
-            Truparse · 2021 — 2025
-          </div>
-          <h3>
-            Building the frontend for a fintech platform serving 200K+ users
-          </h3>
-          <p>
-            Sole frontend engineer across two major versions of Figur Africa —
-            from architecture decisions to pixel-level polish, owning every
-            layer of the UI. Led performance optimisation for v2, scaling the
-            platform from 50K to 200K+ users with 90%+ test coverage and
-            WCAG-compliant interfaces.
-          </p>
-          <div class="project-tags">
-            <span>React</span><span>Next.js</span><span>TypeScript</span>
-            <span>Tailwind CSS</span><span>Redux</span><span>REST APIs</span><span>Docker</span><span>GitHub
-              Actions</span>
-          </div>
+      .exp-body .exp-desc {
+        font-size: 0.82rem;
+        color: var(--light);
+        font-style: italic;
+        margin-bottom: 0.75rem;
+      }
+
+      .exp-body ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .exp-body ul li {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.65;
+        padding-left: 1rem;
+        position: relative;
+      }
+
+      .exp-body ul li::before {
+        content: '–';
+        position: absolute;
+        left: 0;
+        color: var(--light);
+      }
+
+      /* CTA */
+      .cta-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 3rem;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-family: 'Shippori Mincho', serif;
+
+        font-size: 2rem;
+        font-weight: 400;
+        margin-bottom: 0.75rem;
+      }
+
+      .cta-section p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        background: var(--text);
+        color: var(--bg);
+        padding: 0.75rem 2.25rem;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition:
+          opacity 0.25s,
+          background 0.35s,
+          color 0.35s;
+      }
+
+      .cta-btn:hover {
+        opacity: 0.8;
+      }
+
+      /* Footer */
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2.5rem 3rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        transition: border-color 0.35s;
+      }
+
+      .footer-copy {
+        font-size: 0.8rem;
+        color: var(--light);
+      }
+
+      .footer-time {
+        font-size: 0.8rem;
+        color: var(--light);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .footer-links a {
+        font-size: 0.82rem;
+        color: var(--muted);
+        transition: color 0.25s;
+      }
+
+      .footer-links a:hover {
+        color: var(--text);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        .header-inner {
+          padding: 1.25rem 1.5rem;
+        }
+
+        .hero {
+          padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .section {
+          padding: 3.5rem 1.5rem;
+        }
+
+        .cta-section {
+          padding: 3.5rem 1.5rem;
+        }
+
+        footer {
+          padding: 2rem 1.5rem;
+        }
+
+        .exp-item {
+          grid-template-columns: 1fr;
+          gap: 0.25rem;
+        }
+
+        .header-links a:not(.cta-link) {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-inner">
+        <div class="site-name">J.O</div>
+        <div class="header-links">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="mailto:janeteneogenyi@gmail.com" class="cta-link"
+            >Work with me</a
+          >
+          <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
         </div>
       </div>
+    </header>
 
-      <!-- <div class="project-card reveal">
+    <div class="hero">
+      <h1 class="reveal">
+        Frontend engineer and builder, shipping thoughtful products with code
+        and infrastructure.
+      </h1>
+      <p class="hero-bio reveal">
+        I am Janet, a <strong>Frontend Engineer</strong> based in Lagos with 5+
+        years of experience building high-performance web applications across
+        fintech, enterprise software, and data-driven platforms. I
+        single-handedly architected the frontend for a fintech platform serving
+        <strong>200,000+ users</strong>, and I care deeply about the craft of
+        shipping reliable, scalable software.
+      </p>
+      <a href="#projects" class="about-link reveal">See my work ↓</a>
+    </div>
+
+    <div class="section" id="projects">
+      <h2 class="reveal">A few things I have built</h2>
+      <p class="section-sub reveal">
+        Selected work spanning frontend engineering, fintech products, and
+        infrastructure.
+      </p>
+
+      <div class="projects-list">
+        <div class="project-card reveal">
+          <div class="project-info">
+            <div class="project-meta">Truparse · 2021 — 2025</div>
+
+            <h3>
+              Architecting and scaling a fintech platform serving 200K+ users
+            </h3>
+
+            <p>
+              Sole frontend engineer across two major versions of Figur Africa,
+              owning architecture, performance, and user experience end-to-end.
+              Designed and implemented a
+              <strong>dispute resolution system</strong>
+              within the dashboard, handling complex transaction states,
+              asynchronous workflows, and real-time updates.
+
+              <br /><br />
+
+              Converted the platform into a
+              <strong>Progressive Web App (PWA)</strong>, improving load
+              performance, offline access, and reliability for users on
+              low-bandwidth networks. Led performance optimisation for v2,
+              scaling the platform from 50K to 200K+ users with 90%+ test
+              coverage and WCAG-compliant interfaces.
+            </p>
+
+            <div class="project-tags">
+              <span>React</span>
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>Tailwind CSS</span>
+              <span>Redux</span>
+              <span>PWA</span>
+              <span>REST APIs</span>
+              <span>Docker</span>
+              <span>GitHub Actions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="project-card reveal">
           <div class="project-info">
             <div class="project-meta">Side Project · 2025</div>
             <h3>Real-time analytics dashboard with live data feeds</h3>
@@ -578,83 +598,83 @@
           </div>
         </div> -->
 
-      <div class="project-card reveal">
-        <div class="project-info">
-          <div class="project-meta">
-            Client Project · Nigerian House of Representatives
-          </div>
-          <h3>Nigerian Constitution Website</h3>
-          <p>
-            Accessible, responsive site built with Next.js and Tailwind CSS.
-            Optimised with Vite and lazy loading, improving load times by 40%.
-          </p>
-          <div class="project-tags">
-            <span>Next.js</span><span>Tailwind CSS</span><span>Vite</span><span>Accessibility</span>
+        <div class="project-card reveal">
+          <div class="project-info">
+            <div class="project-meta">
+              Client Project · Nigerian House of Representatives
+            </div>
+            <h3>Nigerian Constitution Website</h3>
+            <p>
+              Accessible, responsive site built with Next.js and Tailwind CSS.
+              Optimised with Vite and lazy loading, improving load times by 40%.
+            </p>
+            <div class="project-tags">
+              <span>Next.js</span><span>Tailwind CSS</span><span>Vite</span
+              ><span>Accessibility</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="project-card reveal">
-        <div class="project-info">
-          <div class="project-meta">Side Project · 2025</div>
-          <h3>
-            Containerised deployment pipeline with zero-downtime rollouts
-          </h3>
-          <p>
-            Dockerised a Next.js application with multi-stage builds,
-            configured GitHub Actions for automated testing and deployment to
-            AWS ECS, and set up Nginx reverse proxy with SSL termination.
-          </p>
-          <div class="project-tags">
-            <span>Docker</span><span>GitHub Actions</span><span>AWS ECS</span>
-            <span>Next.js</span><span>Nginx</span>
+        <div class="project-card reveal">
+          <div class="project-info">
+            <div class="project-meta">Side Project · 2025</div>
+            <h3>
+              Containerised deployment pipeline with zero-downtime rollouts
+            </h3>
+            <p>
+              Dockerised a Next.js application with multi-stage builds,
+              configured GitHub Actions for automated testing and deployment to
+              AWS ECS, and set up Nginx reverse proxy with SSL termination.
+            </p>
+            <div class="project-tags">
+              <span>Docker</span><span>GitHub Actions</span><span>AWS ECS</span>
+              <span>Next.js</span><span>Nginx</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="section" id="skills">
-    <h2 class="reveal">What I work with</h2>
-    <p class="section-sub reveal">
-      The tools and technologies I reach for daily.
-    </p>
-    <div class="skills-grid">
-      <div class="skill-item reveal">
-        <h3>Frontend</h3>
-        <p>
-          React.js, Next.js, TypeScript, JavaScript ES6+, Tailwind CSS, SCSS,
-          Styled Components — responsive &amp; accessible interfaces.
-        </p>
-      </div>
-      <div class="skill-item reveal">
-        <h3>DevOps &amp; Infra</h3>
-        <p>
-          Docker, GitHub Actions, CI/CD Pipelines, AWS (EC2, S3, CloudFront,
-          ECS), Linux/Bash, Vercel, Nginx.
-        </p>
-      </div>
-      <div class="skill-item reveal">
-        <h3>State &amp; Data</h3>
-        <p>
-          Redux, Zustand, React Query, REST APIs, WebSockets — real-time and
-          async data patterns.
-        </p>
-      </div>
-      <div class="skill-item reveal">
-        <h3>Testing &amp; Tooling</h3>
-        <p>
-          Jest, Playwright, Vitest, React Testing Library, Storybook, Git,
-          Figma, Jira.
-        </p>
+    <div class="section" id="skills">
+      <h2 class="reveal">What I work with</h2>
+      <p class="section-sub reveal">
+        The tools and technologies I reach for daily.
+      </p>
+      <div class="skills-grid">
+        <div class="skill-item reveal">
+          <h3>Frontend</h3>
+          <p>
+            React.js, Next.js, TypeScript, JavaScript ES6+, Tailwind CSS, SCSS,
+            Styled Components — responsive &amp; accessible interfaces.
+          </p>
+        </div>
+        <div class="skill-item reveal">
+          <h3>DevOps &amp; Infra</h3>
+          <p>
+            Docker, GitHub Actions, CI/CD Pipelines, AWS (EC2, S3, CloudFront,
+            ECS), Linux/Bash, Vercel, Nginx.
+          </p>
+        </div>
+        <div class="skill-item reveal">
+          <h3>State &amp; Data</h3>
+          <p>
+            Redux, Zustand, React Query, REST APIs, WebSockets — real-time and
+            async data patterns.
+          </p>
+        </div>
+        <div class="skill-item reveal">
+          <h3>Testing &amp; Tooling</h3>
+          <p>
+            Jest, Playwright, Vitest, React Testing Library, Storybook, Git,
+            Figma, Jira.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="section" id="experience">
-    <h2 class="reveal">Experience</h2>
-    <p class="section-sub reveal">Where I have been.</p>
-    <!-- <div class="exp-list">
+    <div class="section" id="experience">
+      <h2 class="reveal">Experience</h2>
+      <p class="section-sub reveal">Where I have been.</p>
+      <!-- <div class="exp-list">
         <div class="exp-item reveal">
           <div class="exp-date">Nov 2025 – Present</div>
           <div class="exp-body">
@@ -687,128 +707,130 @@
           </div>
         </div> -->
 
-    <div class="exp-item reveal">
-      <div class="exp-date">May 2021 – Oct 2025</div>
-      <div class="exp-body">
-        <h3>Truparse</h3>
-        <div class="exp-role">Frontend Engineer</div>
-        <div class="exp-desc">
-          Global software engineering firm. Worked across fintech, CRM, and
-          corporate web products.
+      <div class="exp-item reveal">
+        <div class="exp-date">May 2021 – Oct 2025</div>
+        <div class="exp-body">
+          <h3>Truparse</h3>
+          <div class="exp-role">Frontend Engineer</div>
+          <div class="exp-desc">
+            Global software engineering firm. Worked across fintech, CRM, and
+            corporate web products.
+          </div>
+          <ul>
+            <li>
+              Single-handedly built the entire frontend (v1 &amp; v2) for Figur
+              Africa, a fintech platform serving 200,000+ users, using React,
+              TypeScript, and Tailwind CSS with real-time WebSocket
+              integrations.
+            </li>
+            <li>
+              Led performance optimisation for v2, improving load times and
+              scaling from 50K to 200K+ users.
+            </li>
+            <li>
+              Configured deployment pipelines and environment management across
+              staging and production.
+            </li>
+            <li>
+              Achieved 90%+ test coverage with Jest and Playwright; built
+              WCAG-compliant interfaces and mentored frontend interns in an
+              Agile team of 10+.
+            </li>
+          </ul>
         </div>
-        <ul>
-          <li>
-            Single-handedly built the entire frontend (v1 &amp; v2) for
-            Figur Africa, a fintech platform serving 200,000+ users, using
-            React, TypeScript, and Tailwind CSS with real-time WebSocket
-            integrations.
-          </li>
-          <li>
-            Led performance optimisation for v2, improving load times and
-            scaling from 50K to 200K+ users.
-          </li>
-          <li>
-            Configured deployment pipelines and environment management
-            across staging and production.
-          </li>
-          <li>
-            Achieved 90%+ test coverage with Jest and Playwright; built
-            WCAG-compliant interfaces and mentored frontend interns in an
-            Agile team of 10+.
-          </li>
-        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-date">Mar 2021 – Oct 2022</div>
+        <div class="exp-body">
+          <h3>Viwlo</h3>
+          <div class="exp-role">Frontend Engineer</div>
+          <ul>
+            <li>
+              Built reusable React component library with Storybook and Tailwind
+              CSS, reducing UI development time by 25%.
+            </li>
+            <li>
+              Developed internal dashboards and admin tools for managing roles,
+              properties, and analytics.
+            </li>
+            <li>
+              Achieved 90%+ test coverage with Jest; integrated frontend with
+              REST APIs using Redux and React Query.
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Mar 2021 – Oct 2022</div>
-      <div class="exp-body">
-        <h3>Viwlo</h3>
-        <div class="exp-role">Frontend Engineer</div>
-        <ul>
-          <li>
-            Built reusable React component library with Storybook and
-            Tailwind CSS, reducing UI development time by 25%.
-          </li>
-          <li>
-            Developed internal dashboards and admin tools for managing
-            roles, properties, and analytics.
-          </li>
-          <li>
-            Achieved 90%+ test coverage with Jest; integrated frontend with
-            REST APIs using Redux and React Query.
-          </li>
-        </ul>
+    <div class="cta-section">
+      <h2 class="reveal">Open to new opportunities</h2>
+      <p class="reveal">
+        Looking for frontend roles — especially where DevOps and blockchain are
+        part of the picture.
+      </p>
+      <a href="mailto:janeteneogenyi@gmail.com" class="cta-btn reveal"
+        >Work with me</a
+      >
+    </div>
+
+    <footer>
+      <div class="footer-copy">&copy; 2026 Janet Ogenyi · Lagos, Nigeria</div>
+      <div class="footer-time" id="footer-clock"></div>
+      <div class="footer-links">
+        <a href="https://github.com/JanetEne" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/janet-ene-ogenyi/" target="_blank"
+          >LinkedIn</a
+        >
+        <a href="mailto:janeteneogenyi@gmail.com">Email</a>
       </div>
-    </div>
-  </div>
-  </div>
+    </footer>
 
-  <div class="cta-section">
-    <h2 class="reveal">Open to new opportunities</h2>
-    <p class="reveal">
-      Looking for frontend roles — especially where DevOps and
-      blockchain are part of the picture.
-    </p>
-    <a href="mailto:janeteneogenyi@gmail.com" class="cta-btn reveal">Work with me</a>
-  </div>
+    <script>
+      const toggle = document.querySelector('.theme-toggle');
+      const html = document.documentElement;
 
-  <footer>
-    <div class="footer-copy">&copy; 2026 Janet Ogenyi · Lagos, Nigeria</div>
-    <div class="footer-time" id="footer-clock"></div>
-    <div class="footer-links">
-      <a href="https://github.com/JanetEne" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/janet-ene-ogenyi/" target="_blank">LinkedIn</a>
-      <a href="mailto:janeteneogenyi@gmail.com">Email</a>
-    </div>
-  </footer>
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        html.setAttribute('data-theme', saved);
+        toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️';
+      }
 
-  <script>
-    const toggle = document.querySelector('.theme-toggle');
-    const html = document.documentElement;
-
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      html.setAttribute('data-theme', saved);
-      toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      html.setAttribute('data-theme', 'dark');
-      toggle.textContent = '☀️';
-    }
-
-    toggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      toggle.textContent = next === 'dark' ? '☀️' : '🌙';
-      localStorage.setItem('theme', next);
-    });
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-    document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
-
-    function updateClock() {
-      const now = new Date();
-      const time = now.toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
+      toggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('theme', next);
       });
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      document.getElementById('footer-clock').textContent = `${time} · ${tz}`;
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-  </script>
-</body>
 
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+
+      function updateClock() {
+        const now = new Date();
+        const time = now.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        document.getElementById('footer-clock').textContent = `${time} · ${tz}`;
+      }
+      updateClock();
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
 </html>
