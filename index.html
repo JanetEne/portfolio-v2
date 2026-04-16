@@ -143,6 +143,7 @@
         border-color: var(--muted);
       }
 
+      /* Hero */
       .hero {
         max-width: 1200px;
         margin: 0 auto;
@@ -187,6 +188,7 @@
         border-color: var(--text);
       }
 
+      /* Sections */
       .section {
         max-width: 1200px;
         margin: 0 auto;
@@ -265,6 +267,20 @@
         line-height: 1.65;
         margin-bottom: 1.25rem;
         max-width: 680px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8rem;
+        color: var(--warm);
+        margin-bottom: 1.25rem;
+        transition: opacity 0.2s;
+      }
+
+      .project-link:hover {
+        opacity: 0.75;
       }
 
       .project-tags {
@@ -386,7 +402,6 @@
 
       .cta-section h2 {
         font-family: 'Shippori Mincho', serif;
-
         font-size: 2rem;
         font-weight: 400;
         margin-bottom: 0.75rem;
@@ -525,79 +540,85 @@
       <p class="hero-bio reveal">
         I am Janet, a <strong>Frontend Engineer</strong> based in Lagos with 5+
         years of experience building high-performance web applications across
-        fintech, enterprise software, and data-driven platforms. I
-        single-handedly architected the frontend for a fintech platform serving
+        fintech, e-commerce, and data-driven platforms. I single-handedly
+        architected the frontend for a fintech platform serving
         <strong>200,000+ users</strong>, and I care deeply about the craft of
         shipping reliable, scalable software.
       </p>
       <a href="#projects" class="about-link reveal">See my work ↓</a>
     </div>
 
+    <!-- Projects -->
     <div class="section" id="projects">
       <h2 class="reveal">A few things I have built</h2>
       <p class="section-sub reveal">
-        Selected work spanning frontend engineering, fintech products, and
-        infrastructure.
+        Selected work spanning frontend engineering, fintech products,
+        e-commerce, and infrastructure.
       </p>
 
       <div class="projects-list">
+        <!-- Figur Africa -->
         <div class="project-card reveal">
           <div class="project-info">
             <div class="project-meta">Truparse · 2021 — 2025</div>
-
             <h3>
               Architecting and scaling a fintech platform serving 200K+ users
             </h3>
-
             <p>
               Sole frontend engineer across two major versions of Figur Africa,
               owning architecture, performance, and user experience end-to-end.
               Designed and implemented a
-              <strong>dispute resolution system</strong>
-              within the dashboard, handling complex transaction states,
-              asynchronous workflows, and real-time updates.
-
-              <br /><br />
-
+              <strong>dispute resolution system</strong> within the dashboard,
+              handling complex transaction states, asynchronous workflows, and
+              real-time updates. <br /><br />
               Converted the platform into a
               <strong>Progressive Web App (PWA)</strong>, improving load
               performance, offline access, and reliability for users on
               low-bandwidth networks. Led performance optimisation for v2,
-              scaling the platform from 50K to 200K+ users with 90%+ test
-              coverage and WCAG-compliant interfaces.
+              scaling from 50K to 200K+ users with 90%+ test coverage and
+              WCAG-compliant interfaces.
             </p>
-
+            <a href="https://figur.africa" target="_blank" class="project-link">
+              Figur ↗
+            </a>
             <div class="project-tags">
-              <span>React</span>
-              <span>Next.js</span>
-              <span>TypeScript</span>
-              <span>Tailwind CSS</span>
-              <span>Redux</span>
-              <span>PWA</span>
-              <span>REST APIs</span>
-              <span>Docker</span>
-              <span>GitHub Actions</span>
+              <span>React</span><span>Next.js</span><span>TypeScript</span>
+              <span>Tailwind CSS</span><span>Redux</span><span>PWA</span>
+              <span>WebSockets</span><span>Docker</span
+              ><span>GitHub Actions</span>
             </div>
           </div>
         </div>
 
-        <!-- <div class="project-card reveal">
+        <!-- Blunt Gadgets -->
+        <div class="project-card reveal">
           <div class="project-info">
-            <div class="project-meta">Side Project · 2025</div>
-            <h3>Real-time analytics dashboard with live data feeds</h3>
+            <div class="project-meta">E-commerce · Live Product</div>
+            <h3>
+              Blunt Gadgets — Mini e-commerce platform for consumer electronics
+            </h3>
             <p>
-              Full-stack dashboard with real-time data visualisation, role-based
-              access control, and optimised API caching. Features WebSocket
-              integration for live updates, multi-environment support, and a
-              polished responsive UI.
+              Built and shipped a fully functional e-commerce storefront for
+              consumer electronics, covering product listings, cart management,
+              checkout flows, and order handling. Focused on fast load times,
+              intuitive UX, and a clean responsive design that works across
+              devices.
             </p>
+            <a
+              href="https://bluntgadgets.com"
+              target="_blank"
+              class="project-link"
+            >
+              Blunt Gadgets ↗
+            </a>
             <div class="project-tags">
-              <span>Next.js</span><span>TypeScript</span><span>WebSocket</span>
-              <span>React Query</span><span>Tailwind</span>
+              <span>React</span><span>Next.js</span><span>TypeScript</span>
+              <span>Tailwind CSS</span><span>E-commerce</span>
             </div>
           </div>
-        </div> -->
+        </div>
 
+        <!-- Nigerian Constitution -->
         <div class="project-card reveal">
           <div class="project-info">
             <div class="project-meta">
@@ -608,6 +629,9 @@
               Accessible, responsive site built with Next.js and Tailwind CSS.
               Optimised with Vite and lazy loading, improving load times by 40%.
             </p>
+            <a href="https://hccr.gov.ng/" target="_blank" class="project-link">
+              HCCR ↗
+            </a>
             <div class="project-tags">
               <span>Next.js</span><span>Tailwind CSS</span><span>Vite</span
               ><span>Accessibility</span>
@@ -615,9 +639,10 @@
           </div>
         </div>
 
+        <!-- Deployment Pipeline -->
         <div class="project-card reveal">
           <div class="project-info">
-            <div class="project-meta">Side Project · 2025</div>
+            <div class="project-meta">Infrastructure · 2025</div>
             <h3>
               Containerised deployment pipeline with zero-downtime rollouts
             </h3>
@@ -634,6 +659,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Skills -->
     <div class="section" id="skills">
       <h2 class="reveal">What I work with</h2>
       <p class="section-sub reveal">
@@ -671,94 +698,71 @@
       </div>
     </div>
 
+    <!-- Experience -->
     <div class="section" id="experience">
       <h2 class="reveal">Experience</h2>
       <p class="section-sub reveal">Where I have been.</p>
-      <!-- <div class="exp-list">
+      <div class="exp-list">
         <div class="exp-item reveal">
-          <div class="exp-date">Nov 2025 – Present</div>
+          <div class="exp-date">May 2021 – Oct 2025</div>
           <div class="exp-body">
-            <h3>Keystal</h3>
+            <h3>Truparse</h3>
             <div class="exp-role">Frontend Engineer</div>
             <div class="exp-desc">
-              Software development and IT consulting firm specialising in
-              proprietary technology products and digital innovation.
+              Global software engineering firm. Worked across fintech, CRM, and
+              corporate web products.
             </div>
             <ul>
               <li>
-                Building responsive, data-driven dashboards with React,
-                TypeScript, and Next.js, displaying real-time analytics,
-                portfolio data, and transaction histories.
+                Single-handedly built the entire frontend (v1 &amp; v2) for
+                Figur Africa, a fintech platform serving 200,000+ users, using
+                React, TypeScript, and Tailwind CSS with real-time WebSocket
+                integrations.
               </li>
               <li>
-                Architected CI/CD pipelines using GitHub Actions for automated
-                linting, testing, and deployment, reducing release cycles and
-                eliminating manual errors.
+                Designed and built the dispute resolution dashboard — handling
+                complex transaction states, multi-step workflows, and role-based
+                views — and shipped it as a PWA for offline access and improved
+                performance on low-bandwidth networks.
               </li>
               <li>
-                Containerised frontend applications with Docker for consistent
-                development, staging, and production environments.
+                Led performance optimisation for v2, improving load times and
+                scaling from 50K to 200K+ users.
               </li>
               <li>
-                Implemented complex interactive UIs with optimistic updates,
-                loading state management, and graceful error handling.
+                Architected CI/CD pipelines using GitHub Actions and
+                containerised applications with Docker for consistent
+                environments across staging and production.
+              </li>
+              <li>
+                Achieved 90%+ test coverage with Jest and Playwright; built
+                WCAG-compliant interfaces and mentored frontend interns in an
+                Agile team of 10+.
               </li>
             </ul>
           </div>
-        </div> -->
-
-      <div class="exp-item reveal">
-        <div class="exp-date">May 2021 – Oct 2025</div>
-        <div class="exp-body">
-          <h3>Truparse</h3>
-          <div class="exp-role">Frontend Engineer</div>
-          <div class="exp-desc">
-            Global software engineering firm. Worked across fintech, CRM, and
-            corporate web products.
-          </div>
-          <ul>
-            <li>
-              Single-handedly built the entire frontend (v1 &amp; v2) for Figur
-              Africa, a fintech platform serving 200,000+ users, using React,
-              TypeScript, and Tailwind CSS with real-time WebSocket
-              integrations.
-            </li>
-            <li>
-              Led performance optimisation for v2, improving load times and
-              scaling from 50K to 200K+ users.
-            </li>
-            <li>
-              Configured deployment pipelines and environment management across
-              staging and production.
-            </li>
-            <li>
-              Achieved 90%+ test coverage with Jest and Playwright; built
-              WCAG-compliant interfaces and mentored frontend interns in an
-              Agile team of 10+.
-            </li>
-          </ul>
         </div>
-      </div>
 
-      <div class="exp-item reveal">
-        <div class="exp-date">Mar 2021 – Oct 2022</div>
-        <div class="exp-body">
-          <h3>Viwlo</h3>
-          <div class="exp-role">Frontend Engineer</div>
-          <ul>
-            <li>
-              Built reusable React component library with Storybook and Tailwind
-              CSS, reducing UI development time by 25%.
-            </li>
-            <li>
-              Developed internal dashboards and admin tools for managing roles,
-              properties, and analytics.
-            </li>
-            <li>
-              Achieved 90%+ test coverage with Jest; integrated frontend with
-              REST APIs using Redux and React Query.
-            </li>
-          </ul>
+        <div class="exp-item reveal">
+          <div class="exp-date">Mar 2021 – Oct 2022</div>
+          <div class="exp-body">
+            <h3>Viwlo</h3>
+            <div class="exp-role">Frontend Engineer</div>
+            <ul>
+              <li>
+                Built reusable React component library with Storybook and
+                Tailwind CSS, reducing UI development time by 25%.
+              </li>
+              <li>
+                Developed internal dashboards and admin tools for managing
+                roles, properties, and analytics.
+              </li>
+              <li>
+                Achieved 90%+ test coverage with Jest; integrated frontend with
+                REST APIs using Redux and React Query.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
